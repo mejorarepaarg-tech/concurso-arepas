@@ -33,6 +33,11 @@ create table restaurants (
   modalidad          modalidad_inscripcion not null,
   category           categoria_restaurante not null default 'presencial',
   direccion          text,
+  provincia          text,
+  ciudad             text,
+  latitud            numeric(9, 6),
+  longitud           numeric(9, 6),
+  foto_arepa_url     text,
   opt_in_leaderboard boolean not null default false,
   delivery_link      text,
   qr_code_url        text,
@@ -52,6 +57,8 @@ alter table restaurants
 create table votes (
   id                  uuid primary key default uuid_generate_v4(),
   restaurant_id       uuid not null references restaurants(id) on delete cascade,
+  rating              smallint not null check (rating between 1 and 5),
+  comentario          text not null,
   nombre              text not null,
   telefono            text not null,
   mail                text not null,
@@ -119,9 +126,10 @@ alter table votes enable row level security;
 alter table jury_visits enable row level security;
 alter table event_config enable row level security;
 
-create policy "restaurants_select_authenticated"
+-- lectura pública: la landing (mapa, galería, dropdown de voto) es anónima por diseño
+create policy "restaurants_select_public"
   on restaurants for select
-  to authenticated
+  to anon, authenticated
   using (true);
 
 -- votes: inserción pública (anon) permitida — el control real de fraude ocurre

@@ -1,6 +1,7 @@
 'use client'
 
 import { useFormState, useFormStatus } from 'react-dom'
+import { useState } from 'react'
 import Script from 'next/script'
 import { votar, type VotarState } from '@/lib/actions/votar'
 
@@ -19,13 +20,45 @@ function SubmitButton() {
   )
 }
 
+function EstrellasInput({ value, onChange }: { value: number; onChange: (v: number) => void }) {
+  return (
+    <div className="flex gap-1" role="radiogroup" aria-label="Calificación">
+      <input type="hidden" name="rating" value={value} />
+      {[1, 2, 3, 4, 5].map((n) => (
+        <button
+          key={n}
+          type="button"
+          role="radio"
+          aria-checked={value === n}
+          aria-label={`${n} estrella${n > 1 ? 's' : ''}`}
+          onClick={() => onChange(n)}
+          className={`text-3xl leading-none transition ${
+            n <= value ? 'text-dorado' : 'text-gray-300'
+          }`}
+        >
+          ★
+        </button>
+      ))}
+    </div>
+  )
+}
+
 interface Restaurant {
   id: string
   nombre: string
 }
 
-export default function VotoForm({ restaurants }: { restaurants: Restaurant[] }) {
+export default function VotoForm({
+  restaurants,
+  selectedRestaurantId,
+  onSelectRestaurant,
+}: {
+  restaurants: Restaurant[]
+  selectedRestaurantId: string
+  onSelectRestaurant: (id: string) => void
+}) {
   const [state, formAction] = useFormState(votar, initialState)
+  const [rating, setRating] = useState(0)
 
   if (state.status === 'ok') {
     return (
@@ -45,7 +78,8 @@ export default function VotoForm({ restaurants }: { restaurants: Restaurant[] })
           <select
             name="restaurant_id"
             required
-            defaultValue=""
+            value={selectedRestaurantId}
+            onChange={(e) => onSelectRestaurant(e.target.value)}
             className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-celeste bg-white"
           >
             <option value="" disabled>
@@ -57,6 +91,22 @@ export default function VotoForm({ restaurants }: { restaurants: Restaurant[] })
               </option>
             ))}
           </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-marino mb-1">Calificación</label>
+          <EstrellasInput value={rating} onChange={setRating} />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-marino mb-1">Reseña</label>
+          <textarea
+            name="comentario"
+            required
+            rows={3}
+            placeholder="Contanos qué te pareció la arepa"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-celeste"
+          />
         </div>
 
         <div>

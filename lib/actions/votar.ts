@@ -30,6 +30,8 @@ async function validarTurnstile(token: string): Promise<boolean> {
 
 export async function votar(_prev: VotarState, formData: FormData): Promise<VotarState> {
   const restaurantId = String(formData.get('restaurant_id') ?? '')
+  const rating = Number(formData.get('rating') ?? 0)
+  const comentario = String(formData.get('comentario') ?? '').trim()
   const nombre = String(formData.get('nombre') ?? '').trim()
   const telefono = String(formData.get('telefono') ?? '').trim()
   const mail = String(formData.get('mail') ?? '').trim().toLowerCase()
@@ -37,8 +39,11 @@ export async function votar(_prev: VotarState, formData: FormData): Promise<Vota
   const turnstileToken = String(formData.get('cf-turnstile-response') ?? '')
 
   // Validación server-side — nunca confiar solo en el frontend.
-  if (!restaurantId || !nombre || !telefono || !mail || !consentimiento) {
+  if (!restaurantId || !nombre || !telefono || !mail || !consentimiento || !comentario) {
     return { status: 'error', message: 'Completá todos los campos obligatorios.' }
+  }
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    return { status: 'error', message: 'Seleccioná una calificación de 1 a 5 estrellas.' }
   }
   if (!TELEFONO_AR_REGEX.test(telefono)) {
     return { status: 'error', message: 'El teléfono no tiene un formato válido.' }
@@ -67,6 +72,8 @@ export async function votar(_prev: VotarState, formData: FormData): Promise<Vota
   // Capa 2 — deduplicación a nivel de todo el evento (constraint único en DB).
   const { error } = await admin.from('votes').insert({
     restaurant_id: restaurantId,
+    rating,
+    comentario,
     nombre,
     telefono,
     mail,

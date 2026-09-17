@@ -1,5 +1,13 @@
+import dynamic from 'next/dynamic'
 import { createClient } from '@/lib/supabase/server'
-import VotoForm from './VotoForm'
+import VotacionSection from './VotacionSection'
+
+const Mapa = dynamic(() => import('./Mapa'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] rounded-2xl bg-marino2 animate-pulse" />
+  ),
+})
 
 export default async function HomePage() {
   const supabase = await createClient()
@@ -7,12 +15,18 @@ export default async function HomePage() {
   // categoría delivery (sección 3 del spec) — sin distinción visual para el votante.
   const { data: restaurants } = await supabase
     .from('restaurants')
-    .select('id, nombre')
+    .select('id, nombre, provincia, ciudad, foto_arepa_url, latitud, longitud, category')
     .order('nombre', { ascending: true })
+
+  const todos = restaurants ?? []
+  // El mapa solo muestra locales presenciales con coordenadas cargadas.
+  const pinesMapa = todos.filter(
+    (r) => r.category === 'presencial' && r.latitud !== null && r.longitud !== null
+  ) as { id: string; nombre: string; ciudad: string | null; latitud: number; longitud: number }[]
 
   return (
     <main className="min-h-screen bg-marino">
-      {/* Hero / landing */}
+      {/* Hero */}
       <section className="flex flex-col items-center justify-center text-center px-4 py-20">
         <p className="text-dorado font-bold tracking-wide uppercase text-sm">
           Concurso Mejor Arepa de Argentina 2026
@@ -21,20 +35,18 @@ export default async function HomePage() {
           Elegí tu Favorito del Público
         </h1>
         <p className="text-celeste mt-4 max-w-xl">
-          Votá una sola vez por el restaurante que preparó tu arepa favorita.
-          El resultado se revela en la Gala final.
+          Probá, calificá y dejá tu reseña. Votá una sola vez por el restaurante
+          que preparó tu arepa favorita. El resultado se revela en la Gala final.
         </p>
       </section>
 
-      {/* Sección de votación */}
-      <section className="px-4 pb-20">
-        <div className="w-full max-w-md mx-auto bg-crema rounded-2xl shadow-xl p-8">
-          <h2 className="text-marino text-xl font-bold text-center mb-6">
-            Registrá tu voto
-          </h2>
-          <VotoForm restaurants={restaurants ?? []} />
-        </div>
+      {/* Mapa nacional */}
+      <section className="px-4 pb-16 max-w-4xl mx-auto">
+        <Mapa restaurantes={pinesMapa} />
       </section>
+
+      {/* Galería + votación */}
+      <VotacionSection restaurants={todos} />
     </main>
   )
 }
