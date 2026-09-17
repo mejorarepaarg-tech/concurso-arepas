@@ -26,35 +26,17 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen bg-marino">
-      {/* Hero — pantalla completa, imagen a sangre como referencia tuliorecomienda.com */}
-      <section className="relative h-screen w-full overflow-hidden flex items-center">
+      {/* Hero — pantalla completa, solo el logo del evento. El fondo de la
+          sección es blanco (crema), igual al fondo propio del PNG, por eso
+          object-contain no deja ninguna costura visible aunque el logo sea
+          más ancho que alto y el hero sea h-screen. */}
+      <section className="h-screen w-full bg-crema flex items-center justify-center px-6">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/logo-evento.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
+          src="/logo-evento-blanco.png"
+          alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Morixe"
+          className="w-full h-full object-contain"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-marino via-marino/90 to-marino/40" />
-
-        <div className="relative z-10 px-6 md:px-16 max-w-2xl">
-          <p className="text-dorado font-bold tracking-wide uppercase text-sm">
-            Concurso Mejor Arepa de Argentina 2026
-          </p>
-          <h1 className="text-crema text-5xl md:text-7xl font-extrabold mt-3 leading-none">
-            Elegí tu Favorito del Público
-          </h1>
-          <p className="text-celeste mt-6 max-w-md text-lg">
-            Probá, calificá y dejá tu reseña. Votá una sola vez por el restaurante
-            que preparó tu arepa favorita. El resultado se revela en la Gala final.
-          </p>
-          <a
-            href="#votar"
-            className="inline-block mt-8 bg-dorado hover:bg-dorado2 text-marino font-bold px-8 py-3 rounded-full transition"
-          >
-            Votar ahora
-          </a>
-        </div>
       </section>
 
       {/* Mapa nacional — sección clara, alterna el ritmo visual */}
