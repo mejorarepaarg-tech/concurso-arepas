@@ -75,7 +75,7 @@ export default function Galeria({
 
               <button
                 onClick={() => onVotar(r.id)}
-                className="mt-4 w-full bg-dorado hover:bg-dorado2 text-marino font-bold py-2 rounded-lg transition text-sm"
+                className="mt-4 w-full bg-dorado hover:bg-dorado2 text-marino font-bold py-2 rounded-full transition text-sm"
               >
                 Votar
               </button>

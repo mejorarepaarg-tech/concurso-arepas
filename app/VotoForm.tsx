@@ -13,7 +13,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full bg-dorado hover:bg-dorado2 text-marino font-bold py-3 rounded-lg transition disabled:opacity-50"
+      className="w-full bg-dorado hover:bg-dorado2 text-marino font-bold py-3 rounded-full transition disabled:opacity-50"
     >
       {pending ? 'Enviando...' : 'Votar'}
     </button>

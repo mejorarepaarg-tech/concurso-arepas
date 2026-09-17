@@ -27,26 +27,49 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-marino">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center text-center px-4 py-20">
-        <p className="text-dorado font-bold tracking-wide uppercase text-sm">
-          Concurso Mejor Arepa de Argentina 2026
-        </p>
-        <h1 className="text-crema text-3xl md:text-5xl font-bold mt-3 max-w-2xl">
-          Elegí tu Favorito del Público
-        </h1>
-        <p className="text-celeste mt-4 max-w-xl">
-          Probá, calificá y dejá tu reseña. Votá una sola vez por el restaurante
-          que preparó tu arepa favorita. El resultado se revela en la Gala final.
-        </p>
+      <section className="px-6 md:px-16 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
+        <div className="text-center md:text-left">
+          <p className="text-dorado font-bold tracking-wide uppercase text-sm">
+            Concurso Mejor Arepa de Argentina 2026
+          </p>
+          <h1 className="text-crema text-4xl md:text-6xl font-extrabold mt-3 leading-tight">
+            Elegí tu Favorito del Público
+          </h1>
+          <p className="text-celeste mt-5 max-w-md mx-auto md:mx-0">
+            Probá, calificá y dejá tu reseña. Votá una sola vez por el restaurante
+            que preparó tu arepa favorita. El resultado se revela en la Gala final.
+          </p>
+          <a
+            href="#votar"
+            className="inline-block mt-8 bg-dorado hover:bg-dorado2 text-marino font-bold px-8 py-3 rounded-full transition"
+          >
+            Votar ahora
+          </a>
+        </div>
+        <div className="flex justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-evento.jpg"
+            alt="Concurso Mejor Arepa de Argentina 2026"
+            className="w-full max-w-sm rounded-3xl shadow-2xl"
+          />
+        </div>
       </section>
 
-      {/* Mapa nacional */}
-      <section className="px-4 pb-16 max-w-4xl mx-auto">
-        <Mapa restaurantes={pinesMapa} />
+      {/* Mapa nacional — sección clara, alterna el ritmo visual */}
+      <section className="bg-crema px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-marino text-2xl font-bold text-center mb-8">
+            Restaurantes en todo el país
+          </h2>
+          <Mapa restaurantes={pinesMapa} />
+        </div>
       </section>
 
       {/* Galería + votación */}
-      <VotacionSection restaurants={todos} />
+      <div id="votar">
+        <VotacionSection restaurants={todos} />
+      </div>
 
       {/* Footer — sponsor */}
       <footer className="px-4 py-10 border-t border-white/10 flex flex-col items-center gap-3">
