@@ -47,6 +47,15 @@ export default async function HomePage() {
 
       {/* Galería + votación */}
       <VotacionSection restaurants={todos} />
+
+      {/* Footer — sponsor */}
+      <footer className="px-4 py-10 border-t border-white/10 flex flex-col items-center gap-3">
+        <p className="text-celeste text-sm uppercase tracking-wide">Presentado por</p>
+        <div className="bg-crema rounded-lg px-4 py-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-8" />
+        </div>
+      </footer>
     </main>
   )
 }
