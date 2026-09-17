@@ -6,8 +6,9 @@ interface RestauranteCard {
   id: string
   nombre: string
   provincia: string | null
-  ciudad: string | null
-  foto_arepa_url: string | null
+  direccion: string | null
+  logo_url: string | null
+  instagram_url: string | null
 }
 
 export default function Galeria({
@@ -58,29 +59,47 @@ export default function Galeria({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtrados.map((r) => (
-            <div key={r.id} className="bg-crema rounded-2xl overflow-hidden shadow-lg flex flex-col">
-              <div className="aspect-video bg-marino2 flex items-center justify-center">
-                {r.foto_arepa_url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={r.foto_arepa_url} alt={r.nombre} className="w-full h-full object-cover" />
-                ) : (
-                  <span className="text-celeste text-sm">Sin foto</span>
-                )}
-              </div>
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="text-marino font-bold">{r.nombre}</h3>
-                {r.ciudad && <p className="text-sm text-gray-500">{r.ciudad}</p>}
-                <button
-                  onClick={() => onVotar(r.id)}
-                  className="mt-auto pt-4 text-dorado font-semibold text-sm hover:underline text-left"
+            <div key={r.id} className="bg-crema rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
+              {r.instagram_url ? (
+                <a
+                  href={r.instagram_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center"
                 >
-                  Votar →
-                </button>
-              </div>
+                  <RestauranteLogo r={r} />
+                </a>
+              ) : (
+                <RestauranteLogo r={r} />
+              )}
+
+              <button
+                onClick={() => onVotar(r.id)}
+                className="mt-4 w-full bg-dorado hover:bg-dorado2 text-marino font-bold py-2 rounded-lg transition text-sm"
+              >
+                Votar
+              </button>
             </div>
           ))}
         </div>
       )}
     </div>
+  )
+}
+
+function RestauranteLogo({ r }: { r: RestauranteCard }) {
+  return (
+    <>
+      <div className="w-20 h-20 rounded-full bg-marino2 flex items-center justify-center overflow-hidden mb-3">
+        {r.logo_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={r.logo_url} alt={r.nombre} className="w-full h-full object-cover" />
+        ) : (
+          <span className="text-celeste text-xs">Sin logo</span>
+        )}
+      </div>
+      <h3 className="text-marino font-bold">{r.nombre}</h3>
+      {r.direccion && <p className="text-sm text-gray-500">{r.direccion}</p>}
+    </>
   )
 }

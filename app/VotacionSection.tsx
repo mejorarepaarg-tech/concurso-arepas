@@ -8,8 +8,9 @@ interface Restaurant {
   id: string
   nombre: string
   provincia: string | null
-  ciudad: string | null
-  foto_arepa_url: string | null
+  direccion: string | null
+  logo_url: string | null
+  instagram_url: string | null
 }
 
 export default function VotacionSection({ restaurants }: { restaurants: Restaurant[] }) {

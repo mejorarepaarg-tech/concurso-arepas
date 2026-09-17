@@ -38,6 +38,8 @@ create table restaurants (
   latitud            numeric(9, 6),
   longitud           numeric(9, 6),
   foto_arepa_url     text,
+  logo_url           text,
+  instagram_url      text,
   opt_in_leaderboard boolean not null default false,
   delivery_link      text,
   qr_code_url        text,

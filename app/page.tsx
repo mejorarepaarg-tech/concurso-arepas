@@ -15,7 +15,7 @@ export default async function HomePage() {
   // categoría delivery (sección 3 del spec) — sin distinción visual para el votante.
   const { data: restaurants } = await supabase
     .from('restaurants')
-    .select('id, nombre, provincia, ciudad, foto_arepa_url, latitud, longitud, category')
+    .select('id, nombre, provincia, ciudad, direccion, logo_url, instagram_url, latitud, longitud, category')
     .order('nombre', { ascending: true })
 
   const todos = restaurants ?? []
