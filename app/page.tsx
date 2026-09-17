@@ -26,16 +26,25 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen bg-marino">
-      {/* Hero */}
-      <section className="px-6 md:px-16 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
-        <div className="text-center md:text-left">
+      {/* Hero — pantalla completa, imagen a sangre como referencia tuliorecomienda.com */}
+      <section className="relative h-screen w-full overflow-hidden flex items-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/logo-evento.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-marino via-marino/90 to-marino/40" />
+
+        <div className="relative z-10 px-6 md:px-16 max-w-2xl">
           <p className="text-dorado font-bold tracking-wide uppercase text-sm">
             Concurso Mejor Arepa de Argentina 2026
           </p>
-          <h1 className="text-crema text-4xl md:text-6xl font-extrabold mt-3 leading-tight">
+          <h1 className="text-crema text-5xl md:text-7xl font-extrabold mt-3 leading-none">
             Elegí tu Favorito del Público
           </h1>
-          <p className="text-celeste mt-5 max-w-md mx-auto md:mx-0">
+          <p className="text-celeste mt-6 max-w-md text-lg">
             Probá, calificá y dejá tu reseña. Votá una sola vez por el restaurante
             que preparó tu arepa favorita. El resultado se revela en la Gala final.
           </p>
@@ -45,14 +54,6 @@ export default async function HomePage() {
           >
             Votar ahora
           </a>
-        </div>
-        <div className="flex justify-center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo-evento.jpg"
-            alt="Concurso Mejor Arepa de Argentina 2026"
-            className="w-full max-w-sm rounded-3xl shadow-2xl"
-          />
         </div>
       </section>
 
