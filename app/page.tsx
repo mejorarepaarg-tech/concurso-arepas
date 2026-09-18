@@ -57,7 +57,7 @@ export default async function HomePage() {
           <div className="flex flex-col items-center gap-3">
             <p className="text-gray-500 text-base uppercase tracking-wide">Presentado por</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-16 object-contain" />
+            <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-16 object-contain" />
           </div>
         </section>
 
@@ -136,7 +136,7 @@ export default async function HomePage() {
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Presentado por</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-16 sm:h-24 object-contain" />
+          <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-16 sm:h-24 object-contain" />
         </div>
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Organizado por</p>
