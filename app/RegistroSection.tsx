@@ -1,61 +1,34 @@
-'use client'
-
-import { useState } from 'react'
-
-const FORMULARIOS = {
-  restaurante: {
+const FORMULARIOS = [
+  {
     label: 'Anotá tu restaurante',
+    descripcion: 'Sumá tu local al concurso y competí por el título de Mejor Arepa de Argentina.',
     url: 'https://forms.gle/AYSjwJ8878pCLsxx7',
   },
-  emprendedor: {
+  {
     label: 'Soy emprendedor',
+    descripcion: 'Todavía no tenés local propio pero querés participar igual.',
     url: 'https://forms.gle/Y8hNAj6ipk5ahf7j7',
   },
-} as const
-
-type Tipo = keyof typeof FORMULARIOS
+] as const
 
 export default function RegistroSection() {
-  const [tipo, setTipo] = useState<Tipo>('restaurante')
-
   return (
-    <div>
-      <div className="flex justify-center gap-2 mb-6">
-        {(Object.keys(FORMULARIOS) as Tipo[]).map((key) => (
-          <button
-            key={key}
-            onClick={() => setTipo(key)}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition ${
-              tipo === key ? 'bg-dorado text-marino' : 'bg-white/10 text-crema'
-            }`}
-          >
-            {FORMULARIOS[key].label}
-          </button>
-        ))}
-      </div>
-
-      <div className="bg-crema rounded-2xl shadow-xl overflow-hidden">
-        <iframe
-          key={tipo}
-          src={FORMULARIOS[tipo].url}
-          title={FORMULARIOS[tipo].label}
-          className="w-full h-[900px] border-0"
-        >
-          Cargando…
-        </iframe>
-      </div>
-
-      <p className="text-celeste text-sm text-center mt-4">
-        ¿El formulario no carga?{' '}
+    <div className="grid sm:grid-cols-2 gap-6">
+      {FORMULARIOS.map((f) => (
         <a
-          href={FORMULARIOS[tipo].url}
+          key={f.url}
+          href={f.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline font-semibold"
+          className="bg-crema rounded-2xl shadow-xl p-8 flex flex-col items-center text-center hover:shadow-2xl transition"
         >
-          Abrilo en una pestaña nueva
+          <h3 className="text-marino font-bold text-xl">{f.label}</h3>
+          <p className="text-gray-600 mt-3 flex-1">{f.descripcion}</p>
+          <span className="mt-6 inline-block bg-dorado hover:bg-dorado2 text-marino font-bold px-8 py-3 rounded-full transition">
+            Anotarme
+          </span>
         </a>
-      </p>
+      ))}
     </div>
   )
 }
