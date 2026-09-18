@@ -35,6 +35,7 @@ export default async function HomePage() {
     .eq('clave', 'apertura_votacion')
     .single()
   const aperturaVotacion = config?.valor ?? '2026-11-09'
+  const votacionAbierta = Date.now() >= new Date(aperturaVotacion).getTime()
 
   return (
     <main className="min-h-screen">
@@ -122,7 +123,7 @@ export default async function HomePage() {
 
       {/* Sección 3 (galería) y 4 (voto) */}
       <div id="votar">
-        <VotacionSection restaurants={todos} />
+        <VotacionSection restaurants={todos} votacionAbierta={votacionAbierta} />
       </div>
 
       {/* Footer — fondo blanco, sponsor(s) */}
