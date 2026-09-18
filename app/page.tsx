@@ -38,39 +38,19 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Banner + Hero ocupan juntos exactamente una pantalla completa */}
-      <div className="h-screen flex flex-col">
+      {/* Banner + Hero. En desktop ocupan juntos una pantalla completa;
+          en mobile el logo es muy panorámico para forzar el mismo alto
+          sin dejar espacio vacío, así que el hero toma una altura
+          natural en base al ancho disponible. */}
+      <div className="md:h-screen flex flex-col">
         <CountdownBanner targetDate={aperturaVotacion} />
 
-        {/* Sección 1 — Hero: solo el logo, fondo blanco.
-            En mobile el lockup completo queda chico (es muy panorámico
-            para una pantalla angosta y alta) — se usa el isotipo, más
-            vertical, con el nombre del evento como texto. */}
-        <section className="flex-1 min-h-0 w-full bg-crema flex flex-col items-center justify-center px-6 py-6 gap-6 md:hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/isotipo-blanco.png"
-            alt="Concurso Mejor Arepa de Argentina 2026"
-            className="w-64 h-64 max-w-[70vw] max-h-[45vh] object-contain"
-          />
-          <div className="text-center">
-            <p className="text-marino font-extrabold text-xl leading-tight">
-              CONCURSO MEJOR AREPA
-              <br />
-              DE ARGENTINA 2026
-            </p>
-            <p className="text-gray-500 text-xs uppercase tracking-wide mt-2">
-              Presentado por Morixe
-            </p>
-          </div>
-        </section>
-
-        <section className="hidden md:flex flex-1 min-h-0 w-full bg-crema items-center justify-center px-6">
+        <section className="flex-1 min-h-0 w-full bg-crema flex items-center justify-center px-6 py-10 md:py-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo-evento-blanco.png"
             alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Morixe"
-            className="w-full h-full object-contain"
+            className="w-full max-w-md md:max-w-none md:h-full object-contain"
           />
         </section>
       </div>
