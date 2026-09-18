@@ -44,7 +44,23 @@ export default async function HomePage() {
       <div className="h-screen flex flex-col">
         <CountdownBanner targetDate={aperturaVotacion} />
 
-        <section className="flex-1 min-h-0 w-full bg-crema flex items-center justify-center px-2 md:px-6">
+        {/* Mobile: isotipo (más vertical) + "Presentado por" + logo Morixe */}
+        <section className="flex-1 min-h-0 w-full bg-crema flex flex-col items-center justify-center px-6 gap-4 md:hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/isotipo-blanco.png"
+            alt="Concurso Mejor Arepa de Argentina 2026"
+            className="w-2/3 max-w-[260px] h-auto object-contain"
+          />
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-gray-500 text-xs uppercase tracking-wide">Presentado por</p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-10 object-contain" />
+          </div>
+        </section>
+
+        {/* Desktop: logo completo con todo el texto ya incluido */}
+        <section className="hidden md:flex flex-1 min-h-0 w-full bg-crema items-center justify-center px-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo-evento-blanco.png"
