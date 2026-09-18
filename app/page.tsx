@@ -38,18 +38,20 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Banner de countdown, justo arriba del hero */}
-      <CountdownBanner targetDate={aperturaVotacion} />
+      {/* Banner + Hero ocupan juntos exactamente una pantalla completa */}
+      <div className="h-screen flex flex-col">
+        <CountdownBanner targetDate={aperturaVotacion} />
 
-      {/* Sección 1 — Hero: pantalla completa, solo el logo, fondo blanco. */}
-      <section className="h-screen w-full bg-crema flex items-center justify-center px-6">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/logo-evento-blanco.png"
-          alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Morixe"
-          className="w-full h-full object-contain"
-        />
-      </section>
+        {/* Sección 1 — Hero: solo el logo, fondo blanco. */}
+        <section className="flex-1 min-h-0 w-full bg-crema flex items-center justify-center px-6">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-evento-blanco.png"
+            alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Morixe"
+            className="w-full h-full object-contain"
+          />
+        </section>
+      </div>
 
       {/* Sección 2 — Descripción + fechas a la izquierda, carrusel de arepas a la derecha. Fondo azul oscuro. */}
       <section className="bg-marino px-6 md:px-16 py-20 md:py-28">

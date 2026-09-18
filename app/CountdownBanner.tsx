@@ -35,13 +35,12 @@ export default function CountdownBanner({ targetDate }: { targetDate: string }) 
   }
 
   return (
-    <div className="bg-dorado text-marino py-2 px-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm font-bold uppercase tracking-wide">
-      <span>
-        Faltan {tiempo.dias} día{tiempo.dias === 1 ? '' : 's'} para elegir la mejor arepa del país
-      </span>
+    <div className="bg-dorado text-marino text-center py-2 px-4 text-sm font-bold uppercase tracking-wide">
+      Faltan {tiempo.dias} día{tiempo.dias === 1 ? '' : 's'}{' '}
       <span className="font-mono tabular-nums normal-case tracking-normal">
         {pad(tiempo.horas)}:{pad(tiempo.minutos)}:{pad(tiempo.segundos)}
-      </span>
+      </span>{' '}
+      para elegir la mejor arepa del país
     </div>
   )
 }
