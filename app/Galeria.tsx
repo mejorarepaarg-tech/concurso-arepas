@@ -11,13 +11,7 @@ interface RestauranteCard {
   instagram_url: string | null
 }
 
-export default function Galeria({
-  restaurantes,
-  onVotar,
-}: {
-  restaurantes: RestauranteCard[]
-  onVotar: (restaurantId: string) => void
-}) {
+export default function Galeria({ restaurantes }: { restaurantes: RestauranteCard[] }) {
   const [filtro, setFiltro] = useState('todas')
 
   const provincias = useMemo(() => {
@@ -57,29 +51,9 @@ export default function Galeria({
       {filtrados.length === 0 ? (
         <p className="text-gray-500 text-center">No hay restaurantes para mostrar todavía.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           {filtrados.map((r) => (
-            <div key={r.id} className="bg-marino rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
-              {r.instagram_url ? (
-                <a
-                  href={r.instagram_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center"
-                >
-                  <RestauranteLogo r={r} />
-                </a>
-              ) : (
-                <RestauranteLogo r={r} />
-              )}
-
-              <button
-                onClick={() => onVotar(r.id)}
-                className="mt-4 w-full bg-dorado hover:bg-dorado2 text-marino font-bold py-2 rounded-full transition text-sm"
-              >
-                Votar
-              </button>
-            </div>
+            <RestauranteCardItem key={r.id} r={r} />
           ))}
         </div>
       )}
@@ -87,19 +61,29 @@ export default function Galeria({
   )
 }
 
-function RestauranteLogo({ r }: { r: RestauranteCard }) {
-  return (
-    <>
-      <div className="w-20 h-20 rounded-full bg-marino2 flex items-center justify-center overflow-hidden mb-3">
+function RestauranteCardItem({ r }: { r: RestauranteCard }) {
+  const content = (
+    <div className="bg-marino rounded-2xl shadow-lg py-8 px-4 flex flex-col items-center text-center aspect-[3/4] justify-center">
+      <div className="w-full flex-1 flex items-center justify-center max-h-40">
         {r.logo_url ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={r.logo_url} alt={r.nombre} className="w-full h-full object-cover" />
+          <img src={r.logo_url} alt={r.nombre} className="max-w-full max-h-full object-contain" />
         ) : (
           <span className="text-celeste text-xs">Sin logo</span>
         )}
       </div>
-      <h3 className="text-crema font-bold">{r.nombre}</h3>
-      {r.direccion && <p className="text-sm text-celeste">{r.direccion}</p>}
-    </>
+      <h3 className="text-crema font-bold mt-4">{r.nombre}</h3>
+      {r.direccion && <p className="text-sm text-celeste mt-1">{r.direccion}</p>}
+    </div>
   )
+
+  if (r.instagram_url) {
+    return (
+      <a href={r.instagram_url} target="_blank" rel="noopener noreferrer">
+        {content}
+      </a>
+    )
+  }
+
+  return content
 }

@@ -48,17 +48,10 @@ interface Restaurant {
   nombre: string
 }
 
-export default function VotoForm({
-  restaurants,
-  selectedRestaurantId,
-  onSelectRestaurant,
-}: {
-  restaurants: Restaurant[]
-  selectedRestaurantId: string
-  onSelectRestaurant: (id: string) => void
-}) {
+export default function VotoForm({ restaurants }: { restaurants: Restaurant[] }) {
   const [state, formAction] = useFormState(votar, initialState)
   const [rating, setRating] = useState(0)
+  const [selectedRestaurantId, setSelectedRestaurantId] = useState('')
 
   if (state.status === 'ok') {
     return (
@@ -79,7 +72,7 @@ export default function VotoForm({
             name="restaurant_id"
             required
             value={selectedRestaurantId}
-            onChange={(e) => onSelectRestaurant(e.target.value)}
+            onChange={(e) => setSelectedRestaurantId(e.target.value)}
             className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-celeste bg-white"
           >
             <option value="" disabled>
