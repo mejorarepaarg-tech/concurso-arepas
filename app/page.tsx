@@ -38,19 +38,18 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Banner + Hero. En desktop ocupan juntos una pantalla completa;
-          en mobile el logo es muy panorámico para forzar el mismo alto
-          sin dejar espacio vacío, así que el hero toma una altura
-          natural en base al ancho disponible. */}
-      <div className="md:h-screen flex flex-col">
+      {/* Banner + Hero ocupan juntos una pantalla completa en todos los
+          tamaños — solo el hero debe verse al cargar, sin que se asome
+          la sección siguiente. */}
+      <div className="h-screen flex flex-col">
         <CountdownBanner targetDate={aperturaVotacion} />
 
-        <section className="flex-1 min-h-0 w-full bg-crema flex items-center justify-center px-6 py-10 md:py-0">
+        <section className="flex-1 min-h-0 w-full bg-crema flex items-center justify-center px-2 md:px-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo-evento-blanco.png"
             alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Morixe"
-            className="w-full max-w-md md:max-w-none md:h-full object-contain"
+            className="w-full h-full object-contain"
           />
         </section>
       </div>
