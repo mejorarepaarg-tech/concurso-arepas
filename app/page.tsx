@@ -39,12 +39,25 @@ export default async function HomePage() {
         />
       </section>
 
-      {/* Mapa nacional — sección clara, alterna el ritmo visual */}
-      <section className="bg-crema px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-marino text-2xl font-bold text-center mb-8">
-            Restaurantes en todo el país
-          </h2>
+      {/* Mapa nacional — descripción a la izquierda, mapa a la derecha */}
+      <section className="bg-crema px-6 md:px-16 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div className="text-center md:text-left">
+            <h2 className="text-marino text-3xl md:text-4xl font-extrabold leading-tight">
+              Restaurantes en todo el país
+            </h2>
+            <p className="text-gray-600 mt-4 max-w-md mx-auto md:mx-0">
+              Recorré el mapa y descubrí los restaurantes que compiten este año
+              por el título de Mejor Arepa de Argentina. Elegí el más cercano
+              a vos, probá su arepa y no te olvides de dejar tu voto.
+            </p>
+            <a
+              href="#votar"
+              className="inline-block mt-8 bg-dorado hover:bg-dorado2 text-marino font-bold px-8 py-3 rounded-full transition"
+            >
+              Ver participantes
+            </a>
+          </div>
           <Mapa restaurantes={pinesMapa} />
         </div>
       </section>
