@@ -64,12 +64,12 @@ export default function Galeria({ restaurantes }: { restaurantes: RestauranteCar
 function RestauranteCardItem({ r }: { r: RestauranteCard }) {
   const content = (
     <div className="bg-marino rounded-2xl shadow-lg py-8 px-4 flex flex-col items-center text-center aspect-[3/4] justify-center">
-      <div className="w-full flex-1 flex items-center justify-center max-h-40">
+      <div className="w-28 h-28 rounded-full overflow-hidden bg-crema flex items-center justify-center flex-shrink-0">
         {r.logo_url ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={r.logo_url} alt={r.nombre} className="max-w-full max-h-full object-contain" />
+          <img src={r.logo_url} alt={r.nombre} className="w-full h-full object-cover" />
         ) : (
-          <span className="text-celeste text-xs">Sin logo</span>
+          <span className="text-marino text-xs">Sin logo</span>
         )}
       </div>
       <h3 className="text-crema font-bold mt-4">{r.nombre}</h3>
