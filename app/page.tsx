@@ -127,19 +127,19 @@ export default async function HomePage() {
       </div>
 
       {/* Footer — fondo blanco, sponsor y organizadores lado a lado (siempre en fila) */}
-      <footer className="bg-crema px-4 py-10 border-t border-gray-200 flex flex-row flex-wrap items-start justify-center gap-6 sm:gap-16">
+      <footer className="bg-crema px-6 sm:px-12 py-12 border-t border-gray-200 flex flex-row flex-wrap items-start justify-between gap-8 sm:gap-12 max-w-4xl mx-auto w-full">
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Presentado por</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-10 sm:h-12 object-contain" />
+          <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-16 sm:h-24 object-contain" />
         </div>
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Organizado por</p>
-          <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex items-center gap-6 sm:gap-10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-feor.png" alt="Feor" className="h-14 sm:h-20" />
+            <img src="/logo-feor.png" alt="Feor" className="h-16 sm:h-24" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-14 sm:h-20" />
+            <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-16 sm:h-24" />
           </div>
         </div>
       </footer>
