@@ -126,11 +126,22 @@ export default async function HomePage() {
         <VotacionSection restaurants={todos} votacionAbierta={votacionAbierta} />
       </div>
 
-      {/* Footer — fondo blanco, sponsor(s) */}
-      <footer className="bg-crema px-4 py-10 border-t border-gray-200 flex flex-col items-center gap-3">
-        <p className="text-gray-500 text-sm uppercase tracking-wide">Presentado por</p>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-8" />
+      {/* Footer — fondo blanco, organizadores + sponsor */}
+      <footer className="bg-crema px-4 py-10 border-t border-gray-200 flex flex-col items-center gap-8">
+        <div className="flex flex-col items-center gap-3">
+          <p className="text-gray-500 text-sm uppercase tracking-wide">Organizado por</p>
+          <div className="flex items-center gap-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-feor.png" alt="Feor" className="h-12" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-12" />
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-3">
+          <p className="text-gray-500 text-sm uppercase tracking-wide">Presentado por</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-8" />
+        </div>
       </footer>
     </main>
   )
