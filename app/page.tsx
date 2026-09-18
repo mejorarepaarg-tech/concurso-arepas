@@ -68,7 +68,7 @@ export default async function HomePage() {
               define en una sola semana.
             </p>
             <div className="mt-10 inline-block border-2 border-dorado rounded-2xl px-6 py-4 md:px-10 md:py-6">
-              <p className="text-dorado text-3xl md:text-5xl font-extrabold tracking-tight">
+              <p className="text-dorado text-3xl md:text-5xl font-extrabold tracking-tight text-center">
                 9 AL 15 DE NOVIEMBRE
               </p>
             </div>
