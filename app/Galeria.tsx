@@ -36,7 +36,7 @@ export default function Galeria({
         <button
           onClick={() => setFiltro('todas')}
           className={`px-4 py-1.5 rounded-full text-sm font-medium transition ${
-            filtro === 'todas' ? 'bg-dorado text-marino' : 'bg-white/10 text-crema'
+            filtro === 'todas' ? 'bg-dorado text-marino' : 'bg-marino/10 text-marino'
           }`}
         >
           Todas
@@ -46,7 +46,7 @@ export default function Galeria({
             key={p}
             onClick={() => setFiltro(p)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition ${
-              filtro === p ? 'bg-dorado text-marino' : 'bg-white/10 text-crema'
+              filtro === p ? 'bg-dorado text-marino' : 'bg-marino/10 text-marino'
             }`}
           >
             {p}
@@ -55,11 +55,11 @@ export default function Galeria({
       </div>
 
       {filtrados.length === 0 ? (
-        <p className="text-celeste text-center">No hay restaurantes para mostrar todavía.</p>
+        <p className="text-gray-500 text-center">No hay restaurantes para mostrar todavía.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtrados.map((r) => (
-            <div key={r.id} className="bg-crema rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
+            <div key={r.id} className="bg-marino rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
               {r.instagram_url ? (
                 <a
                   href={r.instagram_url}
@@ -98,8 +98,8 @@ function RestauranteLogo({ r }: { r: RestauranteCard }) {
           <span className="text-celeste text-xs">Sin logo</span>
         )}
       </div>
-      <h3 className="text-marino font-bold">{r.nombre}</h3>
-      {r.direccion && <p className="text-sm text-gray-500">{r.direccion}</p>}
+      <h3 className="text-crema font-bold">{r.nombre}</h3>
+      {r.direccion && <p className="text-sm text-celeste">{r.direccion}</p>}
     </>
   )
 }

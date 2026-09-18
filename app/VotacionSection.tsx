@@ -24,14 +24,16 @@ export default function VotacionSection({ restaurants }: { restaurants: Restaura
 
   return (
     <>
-      <section className="px-4 pb-16">
-        <h2 className="text-crema text-2xl font-bold text-center mb-8">
+      {/* Sección 3 — Galería: fondo blanco, tarjetas azul oscuro */}
+      <section className="bg-crema px-4 py-16">
+        <h2 className="text-marino text-2xl font-bold text-center mb-8">
           Restaurantes participantes
         </h2>
         <Galeria restaurantes={restaurants} onVotar={handleVotar} />
       </section>
 
-      <section ref={formRef} className="px-4 pb-20 scroll-mt-6">
+      {/* Sección 4 — Formulario de voto: fondo azul oscuro */}
+      <section ref={formRef} className="bg-marino px-4 py-16 md:py-20 scroll-mt-6">
         <div className="w-full max-w-md mx-auto bg-crema rounded-2xl shadow-xl p-8">
           <h2 className="text-marino text-xl font-bold text-center mb-6">
             Registrá tu voto

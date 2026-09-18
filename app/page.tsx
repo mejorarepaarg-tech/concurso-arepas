@@ -25,11 +25,8 @@ export default async function HomePage() {
   ) as { id: string; nombre: string; ciudad: string | null; latitud: number; longitud: number }[]
 
   return (
-    <main className="min-h-screen bg-marino">
-      {/* Hero — pantalla completa, solo el logo del evento. El fondo de la
-          sección es blanco (crema), igual al fondo propio del PNG, por eso
-          object-contain no deja ninguna costura visible aunque el logo sea
-          más ancho que alto y el hero sea h-screen. */}
+    <main className="min-h-screen">
+      {/* Sección 1 — Hero: pantalla completa, solo el logo, fondo blanco. */}
       <section className="h-screen w-full bg-crema flex items-center justify-center px-6">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -39,14 +36,14 @@ export default async function HomePage() {
         />
       </section>
 
-      {/* Mapa nacional — descripción a la izquierda, mapa a la derecha */}
-      <section className="bg-crema px-6 md:px-16 py-16 md:py-24">
+      {/* Sección 2 — Mapa: fondo azul oscuro, descripción a la izquierda, mapa a la derecha */}
+      <section className="bg-marino px-6 md:px-16 py-16 md:py-24">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="text-center md:text-left">
-            <h2 className="text-marino text-3xl md:text-4xl font-extrabold leading-tight">
+            <h2 className="text-crema text-3xl md:text-4xl font-extrabold leading-tight">
               Restaurantes en todo el país
             </h2>
-            <p className="text-gray-600 mt-4 max-w-md mx-auto md:mx-0">
+            <p className="text-celeste mt-4 max-w-md mx-auto md:mx-0">
               Recorré el mapa y descubrí los restaurantes que compiten este año
               por el título de Mejor Arepa de Argentina. Elegí el más cercano
               a vos, probá su arepa y no te olvides de dejar tu voto.
@@ -62,18 +59,16 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Galería + votación */}
+      {/* Sección 3 (galería) y 4 (voto) */}
       <div id="votar">
         <VotacionSection restaurants={todos} />
       </div>
 
-      {/* Footer — sponsor */}
-      <footer className="px-4 py-10 border-t border-white/10 flex flex-col items-center gap-3">
-        <p className="text-celeste text-sm uppercase tracking-wide">Presentado por</p>
-        <div className="bg-crema rounded-lg px-4 py-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-8" />
-        </div>
+      {/* Footer — fondo blanco, sponsor(s) */}
+      <footer className="bg-crema px-4 py-10 border-t border-gray-200 flex flex-col items-center gap-3">
+        <p className="text-gray-500 text-sm uppercase tracking-wide">Presentado por</p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-8" />
       </footer>
     </main>
   )
