@@ -50,12 +50,12 @@ export default async function HomePage() {
           <img
             src="/isotipo-blanco.png"
             alt="Concurso Mejor Arepa de Argentina 2026"
-            className="w-2/3 max-w-[260px] h-auto object-contain"
+            className="w-[85vw] max-w-sm h-auto object-contain"
           />
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-gray-500 text-xs uppercase tracking-wide">Presentado por</p>
+          <div className="flex flex-col items-center gap-3">
+            <p className="text-gray-500 text-base uppercase tracking-wide">Presentado por</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-10 object-contain" />
+            <img src="/morixe-2.jfif" alt="Morixe, desde 1901" className="h-16 object-contain" />
           </div>
         </section>
 
