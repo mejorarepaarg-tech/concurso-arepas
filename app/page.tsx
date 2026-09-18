@@ -83,7 +83,7 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="text-center md:text-left">
             <h2 className="text-crema text-3xl md:text-4xl font-extrabold leading-tight">
-              Restaurantes en todo el país
+              Un Concurso Federal
             </h2>
             <p className="text-celeste mt-4 max-w-md mx-auto md:mx-0">
               Recorré el mapa y descubrí los restaurantes que compiten este año
