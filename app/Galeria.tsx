@@ -51,7 +51,7 @@ export default function Galeria({ restaurantes }: { restaurantes: RestauranteCar
       {filtrados.length === 0 ? (
         <p className="text-gray-500 text-center">No hay restaurantes para mostrar todavía.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {filtrados.map((r) => (
             <RestauranteCardItem key={r.id} r={r} />
           ))}
@@ -63,19 +63,17 @@ export default function Galeria({ restaurantes }: { restaurantes: RestauranteCar
 
 function RestauranteCardItem({ r }: { r: RestauranteCard }) {
   const content = (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition p-6 flex items-center gap-4 text-left">
-      <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition p-6 flex flex-col items-center text-center">
+      <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center flex-shrink-0">
         {r.logo_url ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={r.logo_url} alt={r.nombre} className="max-w-full max-h-full object-contain" />
+          <img src={r.logo_url} alt={r.nombre} className="w-full h-full object-cover" />
         ) : (
           <span className="text-gray-400 text-xs text-center">Sin logo</span>
         )}
       </div>
-      <div>
-        <h3 className="text-marino font-bold">{r.nombre}</h3>
-        {r.direccion && <p className="text-sm text-gray-500">{r.direccion}</p>}
-      </div>
+      <h3 className="text-marino font-bold mt-4">{r.nombre}</h3>
+      {r.direccion && <p className="text-sm text-gray-500 mt-1">{r.direccion}</p>}
     </div>
   )
 
