@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { createClient } from '@/lib/supabase/server'
 import VotacionSection from './VotacionSection'
+import CountdownBanner from './CountdownBanner'
 
 const Mapa = dynamic(() => import('./Mapa'), {
   ssr: false,
@@ -24,8 +25,18 @@ export default async function HomePage() {
     (r) => r.category === 'presencial' && r.latitud !== null && r.longitud !== null
   ) as { id: string; nombre: string; ciudad: string | null; latitud: number; longitud: number }[]
 
+  const { data: config } = await supabase
+    .from('event_config')
+    .select('valor')
+    .eq('clave', 'apertura_votacion')
+    .single()
+  const aperturaVotacion = config?.valor ?? '2026-11-09'
+
   return (
     <main className="min-h-screen">
+      {/* Banner de countdown, justo arriba del hero */}
+      <CountdownBanner targetDate={aperturaVotacion} />
+
       {/* Sección 1 — Hero: pantalla completa, solo el logo, fondo blanco. */}
       <section className="h-screen w-full bg-crema flex items-center justify-center px-6">
         {/* eslint-disable-next-line @next/next/no-img-element */}
