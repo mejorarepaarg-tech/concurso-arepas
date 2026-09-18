@@ -126,20 +126,20 @@ export default async function HomePage() {
         <VotacionSection restaurants={todos} votacionAbierta={votacionAbierta} />
       </div>
 
-      {/* Footer — fondo blanco, sponsor y organizadores lado a lado */}
-      <footer className="bg-crema px-4 py-10 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-16">
+      {/* Footer — fondo blanco, sponsor y organizadores lado a lado (siempre en fila) */}
+      <footer className="bg-crema px-4 py-10 border-t border-gray-200 flex flex-row flex-wrap items-start justify-center gap-6 sm:gap-16">
         <div className="flex flex-col items-center gap-3">
-          <p className="text-gray-500 text-sm uppercase tracking-wide">Presentado por</p>
+          <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Presentado por</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-8" />
+          <img src="/morixe-logo.png" alt="Morixe, desde 1901" className="h-10 sm:h-12" />
         </div>
         <div className="flex flex-col items-center gap-3">
-          <p className="text-gray-500 text-sm uppercase tracking-wide">Organizado por</p>
-          <div className="flex items-center gap-6">
+          <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Organizado por</p>
+          <div className="flex items-center gap-4 sm:gap-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-feor.png" alt="Feor" className="h-12" />
+            <img src="/logo-feor.png" alt="Feor" className="h-14 sm:h-20" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-12" />
+            <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-14 sm:h-20" />
           </div>
         </div>
       </footer>
