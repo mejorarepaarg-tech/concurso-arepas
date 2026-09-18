@@ -111,13 +111,13 @@ create table event_config (
 );
 
 insert into event_config (clave, valor, descripcion) values
-  ('cierre_inscripcion',      '2026-08-15', 'Cierre de inscripción (ambas modalidades)'),
-  ('inicio_visitas_jurado',   '2026-08-15', 'Inicio de visitas de jurado'),
-  ('fin_visitas_jurado',      '2026-09-05', 'Fin estimado de visitas de jurado'),
-  ('apertura_votacion',       '2026-09-07', 'Apertura de votación pública'),
-  ('cierre_votacion',         '2026-09-12', 'Cierre de votación pública'),
-  ('escrutinio',              '2026-09-12', 'Escrutinio y auditoría'),
-  ('gala_final',              '2026-09-13', 'Gala final — revelación de reconocimientos');
+  ('cierre_inscripcion',      '2026-10-15', 'Cierre de inscripción (ambas modalidades)'),
+  ('inicio_visitas_jurado',   '2026-10-20', 'Inicio de visitas de jurado'),
+  ('fin_visitas_jurado',      '2026-11-15', 'Fin de visitas de jurado'),
+  ('apertura_votacion',       '2026-11-09', 'Apertura de votación pública'),
+  ('cierre_votacion',         '2026-11-15', 'Cierre de votación pública'),
+  ('escrutinio',              '2026-11-15', 'Escrutinio y auditoría'),
+  ('gala_final',              '2026-11-22', 'Gala final — revelación de reconocimientos');
 
 -- ============================================================
 -- ROW LEVEL SECURITY
