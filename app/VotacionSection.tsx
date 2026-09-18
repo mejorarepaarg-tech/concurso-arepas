@@ -50,8 +50,9 @@ export default function VotacionSection({
               Sumate al concurso
             </h2>
             <p className="text-celeste text-center mb-8">
-              Los cupos son limitados: anotate antes del {fechaCierre} y asegurá
-              tu lugar en el concurso gastronómico más grande del año.
+              Las inscripciones cierran el {fechaCierre}: anotate antes de esa
+              fecha para asegurar tu lugar en el concurso gastronómico más
+              grande del año.
             </p>
             <RegistroSection />
           </div>
