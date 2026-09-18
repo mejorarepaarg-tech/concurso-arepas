@@ -29,12 +29,13 @@ export default async function HomePage() {
     (r) => r.category === 'presencial' && r.latitud !== null && r.longitud !== null
   ) as { id: string; nombre: string; ciudad: string | null; latitud: number; longitud: number }[]
 
-  const { data: config } = await supabase
+  const { data: configRows } = await supabase
     .from('event_config')
-    .select('valor')
-    .eq('clave', 'apertura_votacion')
-    .single()
-  const aperturaVotacion = config?.valor ?? '2026-11-09'
+    .select('clave, valor')
+    .in('clave', ['apertura_votacion', 'cierre_inscripcion'])
+  const configMap = Object.fromEntries((configRows ?? []).map((r) => [r.clave, r.valor]))
+  const aperturaVotacion = configMap.apertura_votacion ?? '2026-11-09'
+  const cierreInscripcion = configMap.cierre_inscripcion ?? '2026-10-15'
   const votacionAbierta = Date.now() >= new Date(aperturaVotacion).getTime()
 
   return (
@@ -123,7 +124,11 @@ export default async function HomePage() {
 
       {/* Sección 3 (galería) y 4 (voto) */}
       <div id="votar">
-        <VotacionSection restaurants={todos} votacionAbierta={votacionAbierta} />
+        <VotacionSection
+          restaurants={todos}
+          votacionAbierta={votacionAbierta}
+          cierreInscripcion={cierreInscripcion}
+        />
       </div>
 
       {/* Footer — fondo blanco, sponsor y organizadores lado a lado (siempre en fila) */}

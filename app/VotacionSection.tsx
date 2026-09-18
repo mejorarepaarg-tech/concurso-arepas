@@ -14,10 +14,17 @@ interface Restaurant {
 export default function VotacionSection({
   restaurants,
   votacionAbierta,
+  cierreInscripcion,
 }: {
   restaurants: Restaurant[]
   votacionAbierta: boolean
+  cierreInscripcion: string
 }) {
+  const fechaCierre = new Date(`${cierreInscripcion}T00:00:00`).toLocaleDateString('es-AR', {
+    day: 'numeric',
+    month: 'long',
+  })
+
   return (
     <>
       {/* Sección 3 — Galería: fondo blanco, tarjetas azul oscuro */}
@@ -43,8 +50,8 @@ export default function VotacionSection({
               Sumate al concurso
             </h2>
             <p className="text-celeste text-center mb-8">
-              La votación pública todavía no abrió. Mientras tanto, anotate
-              para participar.
+              Los cupos son limitados: anotate antes del {fechaCierre} y asegurá
+              tu lugar en el concurso gastronómico más grande del año.
             </p>
             <RegistroSection />
           </div>
