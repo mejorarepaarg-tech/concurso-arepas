@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import { createClient } from '@/lib/supabase/server'
 import VotacionSection from './VotacionSection'
 import CountdownBanner from './CountdownBanner'
+import ArepaCarousel from './ArepaCarousel'
 
 const Mapa = dynamic(() => import('./Mapa'), {
   ssr: false,
@@ -16,10 +17,13 @@ export default async function HomePage() {
   // categoría delivery (sección 3 del spec) — sin distinción visual para el votante.
   const { data: restaurants } = await supabase
     .from('restaurants')
-    .select('id, nombre, provincia, ciudad, direccion, logo_url, instagram_url, latitud, longitud, category')
+    .select('id, nombre, provincia, ciudad, direccion, logo_url, instagram_url, foto_arepa_url, latitud, longitud, category')
     .order('nombre', { ascending: true })
 
   const todos = restaurants ?? []
+  const fotosArepas = todos
+    .map((r) => r.foto_arepa_url)
+    .filter((url): url is string => Boolean(url))
   // El mapa solo muestra locales presenciales con coordenadas cargadas.
   const pinesMapa = todos.filter(
     (r) => r.category === 'presencial' && r.latitud !== null && r.longitud !== null
@@ -47,26 +51,30 @@ export default async function HomePage() {
         />
       </section>
 
-      {/* Sección 2 — Descripción del evento + fechas como protagonista. Fondo azul oscuro. */}
-      <section className="bg-marino px-6 py-20 md:py-28 text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-dorado font-bold tracking-wide uppercase text-sm">
-            Del plato a la gloria
-          </p>
-          <h2 className="text-crema text-3xl md:text-4xl font-extrabold mt-3 leading-tight">
-            Restaurantes de todo el país compiten por el título de
-            Mejor Arepa de Argentina
-          </h2>
-          <p className="text-celeste mt-5 max-w-xl mx-auto">
-            Probá las mejores arepas de tu ciudad, calificá tu favorita y sé
-            parte del jurado que define quién se corona campeón. Todo se
-            define en una sola semana.
-          </p>
-          <div className="mt-10 inline-block border-2 border-dorado rounded-2xl px-8 py-5 md:px-14 md:py-7">
-            <p className="text-dorado text-4xl md:text-6xl font-extrabold tracking-tight">
-              9 AL 15 DE NOVIEMBRE
+      {/* Sección 2 — Descripción + fechas a la izquierda, carrusel de arepas a la derecha. Fondo azul oscuro. */}
+      <section className="bg-marino px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center md:text-left">
+            <p className="text-dorado font-bold tracking-wide uppercase text-sm">
+              Del plato a la gloria
             </p>
+            <h2 className="text-crema text-3xl md:text-4xl font-extrabold mt-3 leading-tight">
+              Restaurantes de todo el país compiten por el título de
+              Mejor Arepa de Argentina
+            </h2>
+            <p className="text-celeste mt-5 max-w-xl mx-auto md:mx-0">
+              Probá las mejores arepas de tu ciudad, calificá tu favorita y sé
+              parte del jurado que define quién se corona campeón. Todo se
+              define en una sola semana.
+            </p>
+            <div className="mt-10 inline-block border-2 border-dorado rounded-2xl px-6 py-4 md:px-10 md:py-6">
+              <p className="text-dorado text-3xl md:text-5xl font-extrabold tracking-tight">
+                9 AL 15 DE NOVIEMBRE
+              </p>
+            </div>
           </div>
+
+          <ArepaCarousel fotos={fotosArepas} />
         </div>
       </section>
 
