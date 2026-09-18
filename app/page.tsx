@@ -51,9 +51,9 @@ export default async function HomePage() {
           <img
             src="/isotipo-blanco.png"
             alt="Concurso Mejor Arepa de Argentina 2026"
-            className="w-full flex-1 min-h-0 object-contain"
+            className="w-64 h-64 max-w-[70vw] max-h-[45vh] object-contain"
           />
-          <div className="text-center flex-shrink-0">
+          <div className="text-center">
             <p className="text-marino font-extrabold text-xl leading-tight">
               CONCURSO MEJOR AREPA
               <br />
