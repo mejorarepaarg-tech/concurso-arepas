@@ -28,16 +28,16 @@ export default function CountdownBanner({ targetDate }: { targetDate: string }) 
 
   if (tiempo.terminado) {
     return (
-      <div className="bg-dorado text-marino text-center py-2 px-4 text-sm font-bold uppercase tracking-wide">
+      <div className="bg-rojo text-white text-center py-3 px-4 text-base sm:text-lg font-extrabold uppercase tracking-wide">
         ¡La mejor arepa del país se elige ahora! Entrá a votar
       </div>
     )
   }
 
   return (
-    <div className="bg-dorado text-marino text-center py-2 px-4 text-sm font-bold uppercase tracking-wide">
-      La mejor arepa del país se elige en:{' '}
-      <span className="font-mono tabular-nums normal-case tracking-normal">
+    <div className="bg-rojo text-white text-center py-3 px-4 font-extrabold uppercase tracking-wide flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+      <span className="text-sm sm:text-lg">La mejor arepa del país se elige en:</span>
+      <span className="font-mono tabular-nums normal-case tracking-normal text-lg sm:text-2xl animate-pulse">
         {tiempo.dias}d {pad(tiempo.horas)}:{pad(tiempo.minutos)}:{pad(tiempo.segundos)}
       </span>
     </div>
