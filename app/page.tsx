@@ -36,7 +36,30 @@ export default async function HomePage() {
         />
       </section>
 
-      {/* Sección 2 — Mapa: fondo azul oscuro, descripción a la izquierda, mapa a la derecha */}
+      {/* Sección 2 — Descripción del evento + fechas como protagonista. Fondo azul oscuro. */}
+      <section className="bg-marino px-6 py-20 md:py-28 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-dorado font-bold tracking-wide uppercase text-sm">
+            Del plato a la gloria
+          </p>
+          <h2 className="text-crema text-3xl md:text-4xl font-extrabold mt-3 leading-tight">
+            Restaurantes de todo el país compiten por el título de
+            Mejor Arepa de Argentina
+          </h2>
+          <p className="text-celeste mt-5 max-w-xl mx-auto">
+            Probá las mejores arepas de tu ciudad, calificá tu favorita y sé
+            parte del jurado que define quién se corona campeón. Todo se
+            define en una sola semana.
+          </p>
+          <div className="mt-10 inline-block border-2 border-dorado rounded-2xl px-8 py-5 md:px-14 md:py-7">
+            <p className="text-dorado text-4xl md:text-6xl font-extrabold tracking-tight">
+              9 AL 15 DE NOVIEMBRE
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección 3 — Mapa: fondo azul oscuro, descripción a la izquierda, mapa a la derecha */}
       <section className="bg-marino px-6 md:px-16 py-16 md:py-24">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="text-center md:text-left">
