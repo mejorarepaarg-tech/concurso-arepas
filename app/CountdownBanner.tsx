@@ -29,18 +29,17 @@ export default function CountdownBanner({ targetDate }: { targetDate: string }) 
   if (tiempo.terminado) {
     return (
       <div className="bg-dorado text-marino text-center py-2 px-4 text-sm font-bold uppercase tracking-wide">
-        ¡La votación ya está abierta! Elegí la mejor arepa del país
+        ¡La mejor arepa del país se elige ahora! Entrá a votar
       </div>
     )
   }
 
   return (
     <div className="bg-dorado text-marino text-center py-2 px-4 text-sm font-bold uppercase tracking-wide">
-      Faltan {tiempo.dias} día{tiempo.dias === 1 ? '' : 's'}{' '}
+      La mejor arepa del país se elige en:{' '}
       <span className="font-mono tabular-nums normal-case tracking-normal">
-        {pad(tiempo.horas)}:{pad(tiempo.minutos)}:{pad(tiempo.segundos)}
-      </span>{' '}
-      para elegir la mejor arepa del país
+        {tiempo.dias}d {pad(tiempo.horas)}:{pad(tiempo.minutos)}:{pad(tiempo.segundos)}
+      </span>
     </div>
   )
 }
