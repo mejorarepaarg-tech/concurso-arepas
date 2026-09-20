@@ -53,17 +53,17 @@ export default async function HomePage() {
           <img
             src="/isotipo-blanco.png"
             alt="Concurso Mejor Arepa de Argentina 2026"
-            className="w-[85vw] max-w-sm h-auto object-contain"
+            className="w-[65vw] max-w-xs h-auto object-contain"
           />
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 w-full">
             <p className="text-gray-500 text-base uppercase tracking-wide">Presentado por</p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between w-full px-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-feor.png" alt="Feor" className="h-10 object-contain" />
+              <img src="/logo-feor.png" alt="Feor" className="h-16 object-contain" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-12 object-contain" />
+              <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-16 object-contain" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-10 object-contain" />
+              <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-16 object-contain" />
             </div>
           </div>
         </section>
