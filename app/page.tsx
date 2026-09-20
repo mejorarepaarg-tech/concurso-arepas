@@ -66,8 +66,8 @@ export default async function HomePage() {
         <section className="hidden md:flex flex-1 min-h-0 w-full bg-crema items-center justify-center px-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-evento-blanco.png"
-            alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Morixe"
+            src="/logo-evento-2.png"
+            alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Feor, Morixe y Secretaría de Cultura"
             className="w-full h-full object-contain"
           />
         </section>
@@ -128,7 +128,7 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
             <p className="text-dorado font-bold tracking-wide uppercase text-sm">
-              Presentado por Morixe
+              La base de cada arepa
             </p>
             <h2 className="text-marino text-3xl md:text-4xl font-extrabold mt-3 leading-tight">
               El ingrediente que lo hace posible
@@ -137,10 +137,9 @@ export default async function HomePage() {
               Cada arepa que se prueba en este concurso nace del mismo punto de
               partida: harina de maíz Morixe. Detrás de la competencia, del
               jurado, y de cada voto del público, hay un ingrediente en común
-              que atraviesa todas las cocinas participantes — el mismo que,
-              desde 1901, acompaña a las familias argentinas en su día a día.
-              Por eso Morixe no solo presenta el Concurso Mejor Arepa de
-              Argentina: es parte de la receta.
+              que atraviesa todas las cocinas participantes. Por eso Morixe no
+              solo presenta el Concurso Mejor Arepa de Argentina: es parte de
+              la receta.
             </p>
           </div>
 
