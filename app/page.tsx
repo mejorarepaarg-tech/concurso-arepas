@@ -47,25 +47,14 @@ export default async function HomePage() {
       <div className="h-screen flex flex-col">
         <CountdownBanner targetDate={aperturaVotacion} />
 
-        {/* Mobile: isotipo (más vertical) + "Presentado por" + logos Feor/Morixe/Secretaría */}
-        <section className="flex-1 min-h-0 w-full bg-crema flex flex-col items-center justify-center px-6 gap-4 md:hidden">
+        {/* Mobile: imagen unica ya compuesta (isotipo + Presentado por + los 3 logos) */}
+        <section className="flex-1 min-h-0 w-full bg-crema flex items-center justify-center px-6 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/isotipo-blanco.png"
-            alt="Concurso Mejor Arepa de Argentina 2026"
-            className="w-[65vw] max-w-xs h-auto object-contain"
+            src="/fondo-mobile.png"
+            alt="Concurso Mejor Arepa de Argentina 2026 — Presentado por Feor, Morixe y Secretaría de Cultura"
+            className="w-full h-full object-contain"
           />
-          <div className="flex flex-col items-center gap-3 w-full">
-            <p className="text-gray-500 text-base uppercase tracking-wide">Presentado por</p>
-            <div className="flex items-center justify-between w-full px-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-feor.png" alt="Feor" className="h-16 object-contain" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-16 object-contain" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-16 object-contain" />
-            </div>
-          </div>
         </section>
 
         {/* Desktop: logo completo con todo el texto ya incluido */}
