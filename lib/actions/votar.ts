@@ -45,6 +45,10 @@ export async function votar(_prev: VotarState, formData: FormData): Promise<Vota
   if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
     return { status: 'error', message: 'Seleccioná una calificación de 1 a 5 estrellas.' }
   }
+  // Límites de longitud: evitan payloads gigantes que inflen la base.
+  if (nombre.length > 80 || comentario.length > 500 || telefono.length > 30 || mail.length > 120) {
+    return { status: 'error', message: 'Alguno de los campos supera el largo permitido.' }
+  }
   if (!TELEFONO_AR_REGEX.test(telefono)) {
     return { status: 'error', message: 'El teléfono no tiene un formato válido.' }
   }

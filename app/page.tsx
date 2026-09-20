@@ -1,11 +1,16 @@
-import dynamic from 'next/dynamic'
-import { createClient } from '@/lib/supabase/server'
+import nextDynamic from 'next/dynamic'
+import { createAdminClient } from '@/lib/supabase/admin'
 import VotacionSection from './VotacionSection'
 import CountdownBanner from './CountdownBanner'
 import ArepaCarousel from './ArepaCarousel'
 import MorixeCarousel from './MorixeCarousel'
 
-const Mapa = dynamic(() => import('./Mapa'), {
+// La home lee datos en vivo (restaurantes, fechas de event_config) y calcula
+// votacionAbierta con la hora del servidor: debe renderizarse en cada request,
+// no congelarse en build time.
+export const dynamic = 'force-dynamic'
+
+const Mapa = nextDynamic(() => import('./Mapa'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-[400px] rounded-2xl bg-marino2 animate-pulse" />
@@ -13,7 +18,10 @@ const Mapa = dynamic(() => import('./Mapa'), {
 })
 
 export default async function HomePage() {
-  const supabase = await createClient()
+  // Lectura server-side con service role: la tabla `restaurants` NO es legible
+  // por el cliente anónimo (ver migración 005) para no exponer columnas internas
+  // (pago_nota, habilitacion_bromatologica, etc.) vía la REST API pública.
+  const supabase = createAdminClient()
   // Todos los restaurantes compiten por Favorito del Público, incluida la
   // categoría delivery (sección 3 del spec) — sin distinción visual para el votante.
   const { data: restaurants } = await supabase
