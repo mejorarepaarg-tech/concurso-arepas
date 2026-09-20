@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import VotacionSection from './VotacionSection'
 import CountdownBanner from './CountdownBanner'
 import ArepaCarousel from './ArepaCarousel'
+import MorixeCarousel from './MorixeCarousel'
 
 const Mapa = dynamic(() => import('./Mapa'), {
   ssr: false,
@@ -119,6 +120,31 @@ export default async function HomePage() {
             </a>
           </div>
           <Mapa restaurantes={pinesMapa} />
+        </div>
+      </section>
+
+      {/* Sección — El ingrediente Morixe, parte central de la descripción del evento. Fondo blanco. */}
+      <section className="bg-crema px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center md:text-left">
+            <p className="text-dorado font-bold tracking-wide uppercase text-sm">
+              Presentado por Morixe
+            </p>
+            <h2 className="text-marino text-3xl md:text-4xl font-extrabold mt-3 leading-tight">
+              El ingrediente que lo hace posible
+            </h2>
+            <p className="text-gray-600 mt-5 max-w-xl mx-auto md:mx-0">
+              Cada arepa que se prueba en este concurso nace del mismo punto de
+              partida: harina de maíz Morixe. Detrás de la competencia, del
+              jurado, y de cada voto del público, hay un ingrediente en común
+              que atraviesa todas las cocinas participantes — el mismo que,
+              desde 1901, acompaña a las familias argentinas en su día a día.
+              Por eso Morixe no solo presenta el Concurso Mejor Arepa de
+              Argentina: es parte de la receta.
+            </p>
+          </div>
+
+          <MorixeCarousel />
         </div>
       </section>
 
