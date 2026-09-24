@@ -171,16 +171,22 @@ export default async function HomePage() {
       <footer className="bg-crema px-6 sm:px-12 py-12 border-t border-gray-200 flex flex-row flex-wrap items-start justify-between gap-8 sm:gap-12 max-w-4xl mx-auto w-full">
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Presentado por</p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-16 sm:h-24 object-contain" />
+          <a href="https://www.instagram.com/morixeoficial/" target="_blank" rel="noopener noreferrer">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/morixe-isologo.png" alt="Morixe, desde 1901" className="h-16 sm:h-24 object-contain" />
+          </a>
         </div>
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide">Organizado por</p>
           <div className="flex items-center gap-6 sm:gap-10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-feor.png" alt="Feor" className="h-16 sm:h-24" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-16 sm:h-24" />
+            <a href="https://www.instagram.com/feor.cheff/" target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-feor.png" alt="Feor" className="h-16 sm:h-24" />
+            </a>
+            <a href="https://www.instagram.com/deportivo_venezolano/" target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/secretaria.png" alt="Secretaría de Cultura, Deportivo Venezolano" className="h-16 sm:h-24" />
+            </a>
           </div>
         </div>
       </footer>
