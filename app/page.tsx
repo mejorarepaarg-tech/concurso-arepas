@@ -41,11 +41,15 @@ export default async function HomePage() {
   const { data: configRows } = await supabase
     .from('event_config')
     .select('clave, valor')
-    .in('clave', ['apertura_votacion', 'cierre_inscripcion'])
+    .in('clave', ['apertura_votacion', 'cierre_inscripcion', 'mostrar_restaurantes'])
   const configMap = Object.fromEntries((configRows ?? []).map((r) => [r.clave, r.valor]))
   const aperturaVotacion = configMap.apertura_votacion ?? '2026-11-09'
   const cierreInscripcion = configMap.cierre_inscripcion ?? '2026-10-15'
   const votacionAbierta = Date.now() >= new Date(aperturaVotacion).getTime()
+  // Ocultamos mapa + galería hasta juntar ~10 restaurantes reales, para no
+  // mostrar una lista muy corta apenas arranca la etapa de inscripciones.
+  // Se reactiva cambiando este valor en event_config, sin necesidad de deploy.
+  const mostrarRestaurantes = configMap.mostrar_restaurantes === 'true'
 
   return (
     <main className="min-h-screen">
@@ -103,28 +107,31 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Sección 3 — Mapa: fondo azul oscuro, descripción a la izquierda, mapa a la derecha */}
-      <section className="bg-marino px-6 md:px-16 py-16 md:py-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <div className="text-center md:text-left">
-            <h2 className="text-crema text-3xl md:text-4xl font-extrabold leading-tight">
-              Un Concurso Federal
-            </h2>
-            <p className="text-celeste mt-4 max-w-md mx-auto md:mx-0">
-              Recorré el mapa y descubrí los restaurantes que compiten este año
-              por el título de Mejor Arepa de Argentina. Elegí el más cercano
-              a vos, probá su arepa y no te olvides de dejar tu voto.
-            </p>
-            <a
-              href="#votar"
-              className="inline-block mt-8 bg-dorado hover:bg-dorado2 text-marino font-bold px-8 py-3 rounded-full transition"
-            >
-              Ver participantes
-            </a>
+      {/* Sección 3 — Mapa: fondo azul oscuro, descripción a la izquierda, mapa a la derecha.
+          Oculta hasta sumar ~10 restaurantes reales (ver event_config.mostrar_restaurantes). */}
+      {mostrarRestaurantes && (
+        <section className="bg-marino px-6 md:px-16 py-16 md:py-24">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+            <div className="text-center md:text-left">
+              <h2 className="text-crema text-3xl md:text-4xl font-extrabold leading-tight">
+                Un Concurso Federal
+              </h2>
+              <p className="text-celeste mt-4 max-w-md mx-auto md:mx-0">
+                Recorré el mapa y descubrí los restaurantes que compiten este año
+                por el título de Mejor Arepa de Argentina. Elegí el más cercano
+                a vos, probá su arepa y no te olvides de dejar tu voto.
+              </p>
+              <a
+                href="#votar"
+                className="inline-block mt-8 bg-dorado hover:bg-dorado2 text-marino font-bold px-8 py-3 rounded-full transition"
+              >
+                Ver participantes
+              </a>
+            </div>
+            <Mapa restaurantes={pinesMapa} />
           </div>
-          <Mapa restaurantes={pinesMapa} />
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Sección — El ingrediente Morixe, parte central de la descripción del evento. Fondo blanco. */}
       <section className="bg-crema px-6 md:px-16 py-20 md:py-28">
@@ -156,6 +163,7 @@ export default async function HomePage() {
           restaurants={todos}
           votacionAbierta={votacionAbierta}
           cierreInscripcion={cierreInscripcion}
+          mostrarRestaurantes={mostrarRestaurantes}
         />
       </div>
 
